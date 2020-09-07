@@ -1,10 +1,3 @@
-
-class ListNode {
-    int val;
-    ListNode next;
-    ListNode(int x) { val = x; }
- }
-
 class Solution86 {
     public ListNode partition(ListNode head, int x) {
         ListNode left = new ListNode(-1);  // 存放小于x的node，使用dummy node初始化
