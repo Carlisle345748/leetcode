@@ -5,7 +5,7 @@
 class Solution:
     def maxSubArray(self, nums: list) -> int:
         prev = nums[0]  # 以i-1结尾的最大子序列和，只维护这一个变量就够了
-        max = prev
+        maxSum = prev
         for i in range(len(nums)):
             if i == 0:
                 prev = nums[0]
@@ -13,11 +13,11 @@ class Solution:
                 # 如果以nums[i-1]结尾和最大子序列和小于0，那么
                 # 以nums[i]极为和最大子序列和就是nums[i]
                 # 否则就是nums[i-1] + nums[i]
-                prev = prev + nums[i] if prev > 0 else nums[i]
-            if prev > max:
-                max = prev
+                prev = max(prev + nums[i], nums[i])
+            if prev > maxSum:
+                maxSum = prev
         
-        return max
+        return maxSum
 
 ## 分治
 # class Solution:

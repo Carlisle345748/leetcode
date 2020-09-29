@@ -28,7 +28,7 @@ class Solution:
         else:
             while (j > i and nums[j] <= nums[i]): j -= 1
             nums[i], nums[j] = nums[j], nums[i]
-            # 逆转后面的数字，使其升序，保证增大幅度最小
+            # 逆转后面的数字，使其升序，保证增大幅度最小。后面的数字是逆序的，只需要一一逆转就好
             i, j = i + 1, len(nums) - 1
             while i < j:
                 nums[i], nums[j] = nums[j], nums[i]

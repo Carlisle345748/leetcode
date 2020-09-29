@@ -96,10 +96,13 @@ class Solution42_4 {
 
         for (int i = 1; i < height.length - 1; i ++) {
             // 我们想要的是maxLeft和maxRight中的最小值
-            // 其中height[right + 1] >= maxRight, height[left - 1] >= maxLeft
-            // 如果height[left - 1] < height[right + 1]
-            // 则maxRight = height[right + 1] > height[left - 1] >= maxLeft
-            // 所以maxRight > maxLeft。反之则 maxRight > maxLeft
+            // height[left - 1] < height[right + 1]，则
+            // maxRight >= height[right + 1] > height[left - 1]
+            // marLeft不可能大于height[left - 1]，否则在maxLeft处会一直从右往左走，直到
+            // 出现height[right + 1] > maxLeft。而此刻刚好正是height[left - 1] < height[right + 1]
+            
+            // 综上：只有在另一边出现更大的maxLeft/maxRight时候，才遍历交换方向，否则一直都是
+            // 从maxLeft/maxRight较小侧到较大侧遍历。
             if (height[left - 1] < height[right + 1]) {
                 maxLeft = Math.max(maxLeft, height[left - 1]);
                 result += Math.max(0, maxLeft - height[left++]);

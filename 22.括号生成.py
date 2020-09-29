@@ -23,7 +23,7 @@ class Solution2:
     """
     动态规划：状态转移方程
     dp表的每个dp[i]包含i对括号的所有可能组合
-    dp[i] = "(" + dp[j] + “)" + dp[i - j - i]  j = 0,1, ... i-1
+    dp[i] = "(" + dp[j] + “)" + dp[i - j - 1]  j = 0,1, ... i-1
     注意，每个j都会产生 len(dp[j]) * dp[i - j - 1]个组合
     """
     def generateParenthesis(self, n: int) -> list:
